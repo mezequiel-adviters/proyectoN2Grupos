@@ -4,6 +4,8 @@ const handleSubmit = (ev) => {
     ev.preventDefault();
     const email = ev.target.elements["email"].value;
     const password = ev.target.elements["pass"].value;
+    console.log(email);
+    console.log(password)
     loginUser(email, password);
 }
 

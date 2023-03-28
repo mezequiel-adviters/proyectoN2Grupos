@@ -20,16 +20,21 @@ const getGroups = () => {
 getGroups();
 
 const addCards = (data) => {
+    console.log(data)
     let container = document.getElementById("cards");
     if(data.length == 0) {
         container.innerHTML = `<p>No hay tarjetas</p>`
         return;
     }
     data.forEach(card => {
-        container.innerHTML += `<div class="container">
-             <p>${card.descripcion}</p>
-             <button onclick="info(${card.id})">INFO</button>
-        </div>`
+        container.innerHTML += 
+        `<div class="container">
+            <img src="../img/paisaje.jpg" alt="Nombre del grupo">
+                <div class="contenedor">
+                    <label for="nombre-grupo">Nombre de grupo: <br> ${card.descripcion} </label>
+                    <button onclick="info(${card.id})">Mas detalles...</button>
+                </div>
+            </div>`
     });
 }
 

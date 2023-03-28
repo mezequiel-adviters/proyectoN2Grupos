@@ -6,12 +6,16 @@ const addCards = (data) => {
         container.innerHTML = `<p>No hay tarjetas</p>`
         return;
     }
-    data.forEach(card => {
-        container.innerHTML += `<div class="container">
-             <p>${card.nombre}</p>
-             <p>${card.apellido}</p>
-             <p>${card.email}</p>
-        </div>`
+    data.forEach((card, index) => {
+        container.innerHTML += 
+        `<div class="container">
+            <img src="../img/paisaje.jpg" alt="Nombre del grupo">
+                <div class="contenedor">
+                    <label for="integranten1-id">Integrante N°: ${index + 1}
+                    <label for="integranten1-nombre">Nombre: ${card.nombre} ${card.apellido}
+                    <label for "integranten1-email">Email: ${card.email}
+                </div>
+            </div>`
     });
 }
 

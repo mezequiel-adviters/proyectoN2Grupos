@@ -11,7 +11,7 @@ body {
     height: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 10rem;
+    margin-top: 7rem;
     background-color: rgba(173, 216, 230, 0.575);
 }
 footer ul {
@@ -65,13 +65,9 @@ h1 {
     border: none;
     box-shadow: 1px 1px 1px;
 }
-.contenedor input:last-of-type {
+.contenedor input {
     cursor: pointer;
 }
-.contenedor input:last-of-type:hover {
-    background-color: rgba(173, 216, 230, 0.842);
-}
-
 @media screen and (max-width:600px){
     .contenedor-imagen {
         display: none;
