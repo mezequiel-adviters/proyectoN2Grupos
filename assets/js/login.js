@@ -32,12 +32,11 @@ fetch(`${URL_BASE}/login`, options)
     }
     })
     .then(data => {
-            localStorage.setItem("token", data.accessToken?.stsTokenManager?.accessToken);
+            sessionStorage.setItem("token", data.accessToken?.stsTokenManager?.accessToken);
             window.location.href = "../../views/index.html";
     })
     .catch(err => {
-        console.log(Error)
-        alert("Error, credenciales incorrectas")
-        
+        console.log(Error);
+        alert("Error, credenciales incorrectas");
     })
 }

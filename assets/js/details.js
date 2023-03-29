@@ -1,4 +1,28 @@
-const data = JSON.parse(localStorage.getItem('groupData'));
+const token = sessionStorage.getItem('token');
+const URL_BASE = "https://bootcamp-adviters.herokuapp.com";
+if (token == null) {
+    window.location.href = "../../views/login.html";
+}
+
+const groupId = JSON.parse(sessionStorage.getItem('groupId'));
+
+const getMembers = (groupId) => {
+    const token = sessionStorage.getItem('token');
+    const options = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `bearer ${token}`
+        }
+    }
+
+    // Peticion mas detalles
+    fetch(`${URL_BASE}/grupos/${groupId}`, options)
+        .then(response => response.json())
+        .then(data => {
+            addCards(data);
+        })
+        .catch(err => console.error(err))
+}
 
 const addCards = (data) => {
     let container = document.getElementById("members");
@@ -20,4 +44,4 @@ const addCards = (data) => {
     });
 }
 
-addCards(data);
+getMembers(groupId);

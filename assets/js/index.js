@@ -1,10 +1,15 @@
 
 const URL_BASE = "https://bootcamp-adviters.herokuapp.com";
+const token = sessionStorage.getItem('token');
+
+if (token == null) {
+    window.location.href = "../../views/login.html";
+}
 
 //Obtenemos el token
 
 const getGroups = () => {
-const token = localStorage.getItem('token');
+const token = sessionStorage.getItem('token');
 const options = {
     headers: {
         "Content-Type": "application/json",
@@ -37,28 +42,15 @@ const addCards = (data) => {
             <img src="../img/notfound.jpg" alt="Nombre del grupo">
                 <div class="contenedor">
                     <label for="nombre-grupo">Nombre de grupo: <br> <p>${card.descripcion} </p> </label>
-                    <button onclick="info(${card.id})">Mas detalles...</button>
+                    <button onclick="saveId(${card.id})">Mas detalles...</button>
                 </div>
             </div>`
     });
 }
-    //Accedemos a id de grupos
-const info = (id) => {
-    const token = localStorage.getItem('token');
-    const options = {
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `bearer ${token}`
-        }
-    }
 
-    //Peticion mas detalles
-fetch(`${URL_BASE}/grupos/${id}`, options)
-    .then(response => response.json())
-    .then(data => {
-        localStorage.setItem("groupData", JSON.stringify(data));
-        window.location.href = "../../views/details.html";
-    })
-    .catch(err => console.error(err))
+    //Guardamos el id del grupo
+const saveId = (id) => {
+    sessionStorage.setItem("groupId", id);
+    window.location.href = "../../views/details.html";
 }
 
